@@ -44,31 +44,42 @@ namespace WebApicall.Controllers
             #endregion
 
 
+            #region Get Free api data
+            var client = new RestClient("https://dog.ceo/api/breeds/image/random");
+
+            var request = new RestRequest();
+            request.Method = Method.Get;
+            var restResponse = client.ExecuteGet(request);
+            ViewModel viewmodel=JsonConvert.DeserializeObject<ViewModel>(restResponse.Content);
+
+
+            return View(viewmodel);
+            #endregion
             #region Web api Post
 
 
-            User userjson = new User
-            {
+            //User userjson = new User
+            //{
 
-                Id = 1,
-                Name = "Tahsin",
-                Token = "Token"
+            //    Id = 1,
+            //    Name = "Tahsin",
+            //    Token = "Token"
 
-            };
-            //RestCharp nugetten indir - Bir rest api ile iletişim kurmaya yarar
-            //NewtonSoft nugetten indir. - Json formatını bir tipe dönüştürmeye yarar
-            var client = new RestClient("https://localhost:7021/Test");
+            //};
+            ////RestCharp nugetten indir - Bir rest api ile iletişim kurmaya yarar
+            ////NewtonSoft nugetten indir. - Json formatını bir tipe dönüştürmeye yarar
+            //var client = new RestClient("https://localhost:7021/Test");
 
-            var request = new RestRequest();
-     
-            request.Method = Method.Post;
+            //var request = new RestRequest();
 
-            request.AddParameter("user", Newtonsoft.Json.JsonConvert.SerializeObject(userjson));
-            var response = client.ExecuteGet(request);
+            //request.Method = Method.Post;
 
-            User? user = JsonConvert.DeserializeObject<User>(response.Content);
+            //request.AddParameter("user", Newtonsoft.Json.JsonConvert.SerializeObject(userjson));
+            //var response = client.ExecuteGet(request);
+
+            //User? user = JsonConvert.DeserializeObject<User>(response.Content);
             #endregion
-            return View();
+            //return View();
         }
 
         public IActionResult Privacy()

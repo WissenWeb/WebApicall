@@ -81,6 +81,7 @@ namespace WebApicall.Controllers
             #endregion
             //return View();
         }
+        
 
         public IActionResult Privacy()
         {
@@ -91,6 +92,12 @@ namespace WebApicall.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        
+        public IActionResult KübraSinifDeneme()
+        {
+            return View();
         }
     }
 }
